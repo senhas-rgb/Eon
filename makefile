@@ -8,5 +8,8 @@ all:
 	$(CC) $(CFLAGS) -c src/kernel/kernel.c -o build/kernel.o
 	$(CC) $(CFLAGS) -c src/kernel/vga.c -o build/vga.o
 	ld -T linker.ld -m elf_i386 build/boot.o build/kernel.o build/vga.o -o src/boot/eonkernel
-	grub-mkrescue -o eon.iso src/boot/
-	qemu-system-x86_64 eon.iso
+	mkdir -p iso_root/boot/grub
+	cp src/boot/eonkernel iso_root/boot/
+	cp src/boot/grub/grub.cfg iso_root/boot/grub/
+	grub-mkrescue -o eon.iso iso_root/
+	qemu-system-x86_64 -cdrom eon.iso

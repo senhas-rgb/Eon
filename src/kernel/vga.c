@@ -1,10 +1,10 @@
 #include <vga.h>
 #include <stdint.h>
 
-extern size_t terminal_row;
-extern size_t terminal_column;
-extern uint8_t terminal_color;
-extern uint16_t* terminal_buffer;
+size_t terminal_row;
+size_t terminal_column;
+uint8_t terminal_color;
+uint16_t* terminal_buffer;
 
 static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg) {
 	return fg | bg << 4;
