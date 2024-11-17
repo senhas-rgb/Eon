@@ -8,9 +8,7 @@ CFLAGS = -m32 -ffreestanding -fno-stack-protector -nostdlib -g -I inc/
 LDFLAGS = -T linker.ld -m elf_i386
 ASFLAGS = --32
 
-$(KERNEL): compile link run clean
-
-$(ISO): $(KERNEL) iso
+all: compile link iso run clean
 
 compile:
 	mkdir -p build
@@ -32,3 +30,4 @@ run:
 
 clean:
 	rm -r build
+	rm $(ISO)
