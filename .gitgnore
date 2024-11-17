@@ -1,0 +1,8 @@
+*.o
+*.elf 
+*.iso
+
+*.bin
+*.swp
+*.orig
+*.swo
