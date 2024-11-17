@@ -4,7 +4,7 @@ ISO = eon.iso
 CC = gcc
 LD = ld
 AS = as
-CFLAGS = -m32 -ffreestanding -fno-stack-protector -nostdlib -g -I inc/
+CFLAGS = -Wall -Werror -Wextra -m32 -ffreestanding -fno-stack-protector -nostdlib -g -I inc/
 LDFLAGS = -T linker.ld -m elf_i386
 ASFLAGS = --32
 
