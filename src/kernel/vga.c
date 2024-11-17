@@ -1,5 +1,5 @@
-#include <vga.h>
-#include <stdint.h>
+#include <kernel/vga.h>
+#include <kernel/stdint.h>
 
 static uint16_t* vga_address = 0xB8000;
 
