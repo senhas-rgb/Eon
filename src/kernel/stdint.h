@@ -33,7 +33,7 @@ typedef unsigned short word;     // 16-bit
 typedef unsigned int dword;      // 32-bit
 
 typedef uint8_t bool;
-#define true 1
-#define false 0
+#define TRUE 1
+#define FALSE 0
 
 #endif
