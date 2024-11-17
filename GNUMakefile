@@ -9,7 +9,9 @@ LDFLAGS = -T linker.ld -m elf_i386
 ASFLAGS = --32
 
 $(KERNEL): compile link run clean
-	
+
+$(ISO): $(KERNEL) iso
+
 compile:
 	mkdir -p build
 	$(AS) $(ASFLAGS) src/kernel/boot.s -o build/boot.o
