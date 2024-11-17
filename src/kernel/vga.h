@@ -1,7 +1,10 @@
-#ifndef __VGA__
-#define __VGA__
+#ifndef __VGA_H__
+#define __VGA_H__
 
 #include <stdint.h>
+
+#define VGA_WIDTH 80
+#define VGA_HEIGHT 25
 
 /* Hardware text mode color constants. */
 enum vga_color {
@@ -23,18 +26,16 @@ enum vga_color {
 	VGA_COLOR_WHITE = 15,
 };
 
-static const size_t VGA_WIDTH = 80;
-static const size_t VGA_HEIGHT = 25;
-
-static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
-static inline uint16_t vga_entry(unsigned char uc, uint8_t color);
-size_t strlen(const char* str);
+inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg);
+inline uint16_t vga_entry(unsigned char uc, enum vga_color color);
+size_t strlen(const char* str); // TODO : move this into string.h
+// TODO : add functions for manipulating the cursor
 void terminal_initialize(void);
-void terminal_setfontcolor(uint8_t color);
-void terminal_setcolor(uint8_t color1, uint8_t color2);
-void new_line();
+void terminal_setfontcolor(enum vga_color color);
+void terminal_setcolor(enum vga_color color1, enum vga_color color2);
+void terminal_new_line(void);
 void terminal_putchar(char c);
-void terminal_putentryat(char c, uint8_t color, size_t x, size_t y);
+void terminal_putentryat(char c, enum vga_color color, size_t x, size_t y);
 void terminal_write(const char* data, size_t size);
 void terminal_writestring(const char* data);
 
