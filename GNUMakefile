@@ -1,4 +1,5 @@
 KERNEL = build/eonkernel.elf
+ISO = eon.iso
 
 CC = gcc
 LD = ld
@@ -17,9 +18,15 @@ compile:
 
 link:
 	$(LD) $(LDFLAGS) build/boot.o build/kernel.o build/vga.o -o $(KERNEL)
-	grub-mkrescue -o eon.iso grub.cfg
+
+iso:
+	mkdir -p build/iso/grub
+	cp grub.cfg build/iso/grub
+	cp $(KERNEL) build/iso
+	grub-mkrescue -o $(ISO) build/iso
 
 run:
-	qemu-system-x86_64 eon.iso
+	qemu-system-x86_64 $(ISO)
 
 clean:
+	rm -r build
