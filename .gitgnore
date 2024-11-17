@@ -1,8 +1,2 @@
-*.o
-*.elf 
-*.iso
-
-*.bin
-*.swp
-*.orig
-*.swo
+build/*
+eon.iso
